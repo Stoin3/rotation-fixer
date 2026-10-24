@@ -28,6 +28,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.Gravity;
+import android.view.HapticFeedbackConstants;
 import android.view.OrientationEventListener;
 import android.view.Surface;
 import android.view.View;
@@ -409,6 +410,7 @@ public class RotationService extends Service {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 onButtonClicked();
             }
         });
