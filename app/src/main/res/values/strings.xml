@@ -10,7 +10,7 @@
     <string name="enable_service">Draai-knop inschakelen</string>
     <string name="allow_upside_down">Ook ondersteboven (180°) voorstellen</string>
     <string name="auto_hide">Knop na 10 seconden verbergen</string>
-    <string name="position">Positie van de knop</string>
+    <string name="position">Positie van de knop (gezien zoals je de telefoon vasthoudt)</string>
     <string name="pos_bottom_right">Rechtsonder</string>
     <string name="pos_bottom_left">Linksonder</string>
     <string name="pos_top_right">Rechtsboven</string>

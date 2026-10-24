@@ -21,7 +21,8 @@ Opties in de app:
 
 - Ook ondersteboven (180°) voorstellen.
 - Knop na 10 seconden automatisch verbergen.
-- Hoek waarin de knop verschijnt.
+- Hoek waarin de knop verschijnt. Die hoek geldt vanuit hoe je de telefoon vasthoudt: met
+  "rechtsonder" staat de knop rechtsonder voor jou, ook als het scherm nog in de oude stand staat.
 
 > Tip: werkt de knop niet op de achtergrond? Zet batterij-optimalisatie voor Rotatieknop uit
 > (Instellingen › Apps › Rotatieknop › Batterij › Onbeperkt).

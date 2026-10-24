@@ -134,9 +134,6 @@ public class RotationService extends Service {
             new SharedPreferences.OnSharedPreferenceChangeListener() {
                 @Override
                 public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-                    if (Prefs.KEY_POSITION.equals(key)) {
-                        removeButton();
-                    }
                     suppressedRotation = -1;
                     evaluate();
                 }
@@ -327,6 +324,12 @@ public class RotationService extends Service {
         if (button == null && !createButton()) {
             return;
         }
+        WindowManager.LayoutParams lp = (WindowManager.LayoutParams) button.getLayoutParams();
+        int gravity = buttonGravity(target, current);
+        if (lp.gravity != gravity) {
+            lp.gravity = gravity;
+            windowManager.updateViewLayout(button, lp);
+        }
         boolean changed = !buttonShown || offeredRotation != target;
         offeredRotation = target;
         if (!changed) {
@@ -371,6 +374,29 @@ public class RotationService extends Service {
         button.setVisibility(View.GONE);
     }
 
+    /**
+     * The configured corner is meant as seen by the user, who holds the phone in the
+     * {@code target} orientation. Translates it to a corner of the screen as currently drawn.
+     */
+    private int buttonGravity(int target, int current) {
+        // Corners numbered clockwise: 0 top-left, 1 top-right, 2 bottom-right, 3 bottom-left.
+        int corner;
+        switch (Prefs.position(this)) {
+            case Prefs.POS_TOP_LEFT: corner = 0; break;
+            case Prefs.POS_TOP_RIGHT: corner = 1; break;
+            case Prefs.POS_BOTTOM_LEFT: corner = 3; break;
+            default: corner = 2; break;
+        }
+        // Each step of rotation between the screen and the phone moves the corner one place on.
+        int steps = (target - current + 4) % 4;
+        switch ((corner + steps) % 4) {
+            case 0: return Gravity.TOP | Gravity.LEFT;
+            case 1: return Gravity.TOP | Gravity.RIGHT;
+            case 2: return Gravity.BOTTOM | Gravity.RIGHT;
+            default: return Gravity.BOTTOM | Gravity.LEFT;
+        }
+    }
+
     private boolean createButton() {
         ImageView view = new ImageView(this);
         view.setImageResource(R.drawable.ic_rotate);
@@ -393,10 +419,7 @@ public class RotationService extends Service {
                 WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
-        int position = Prefs.position(this);
-        boolean top = position == Prefs.POS_TOP_LEFT || position == Prefs.POS_TOP_RIGHT;
-        boolean left = position == Prefs.POS_TOP_LEFT || position == Prefs.POS_BOTTOM_LEFT;
-        lp.gravity = (top ? Gravity.TOP : Gravity.BOTTOM) | (left ? Gravity.START : Gravity.END);
+        lp.gravity = Gravity.BOTTOM | Gravity.RIGHT;
         lp.x = dp(20);
         lp.y = dp(20);
         lp.setTitle("RotateButton");
