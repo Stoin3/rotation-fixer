@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Rotatieknop</string>
+    <string name="intro">Als automatisch draaien uit staat en je telefoon fysiek anders gedraaid is dan het scherm, verschijnt er een draai-knop in de hoek van het scherm. Tik erop om het scherm mee te laten draaien.</string>
+    <string name="perm_overlay">Weergeven over andere apps</string>
+    <string name="perm_write_settings">Systeeminstellingen wijzigen</string>
+    <string name="perm_notifications">Meldingen (optioneel)</string>
+    <string name="granted">Toegestaan ✓</string>
+    <string name="grant">Toestaan</string>
+    <string name="enable_service">Draai-knop inschakelen</string>
+    <string name="allow_upside_down">Ook ondersteboven (180°) voorstellen</string>
+    <string name="auto_hide">Knop na 10 seconden verbergen</string>
+    <string name="position">Positie van de knop</string>
+    <string name="pos_bottom_right">Rechtsonder</string>
+    <string name="pos_bottom_left">Linksonder</string>
+    <string name="pos_top_right">Rechtsboven</string>
+    <string name="pos_top_left">Linksboven</string>
+    <string name="status_ready">Actief. Zet automatisch draaien uit en draai je telefoon om de knop te zien.</string>
+    <string name="status_missing">Geef eerst de benodigde toestemmingen hierboven.</string>
+    <string name="status_off">Uitgeschakeld.</string>
+    <string name="notif_channel">Achtergrondservice</string>
+    <string name="notif_text">Draai-knop is actief</string>
+    <string name="rotate_button">Scherm draaien</string>
+    <string name="need_write_settings">Geef Rotatieknop toestemming om systeeminstellingen te wijzigen</string>
+</resources>
